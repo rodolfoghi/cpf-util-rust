@@ -1,0 +1,61 @@
+use cpf_util as cpf;
+
+#[test]
+fn should_format_cpf_empty() {
+    assert_eq!(cpf::format(""), "");
+}
+
+#[test]
+fn should_format_cpf_with_one_number() {
+    assert_eq!(cpf::format("9"), "9");
+}
+
+#[test]
+fn should_format_cpf_with_two_numbers() {
+    assert_eq!(cpf::format("93"), "93");
+}
+
+#[test]
+fn should_format_cpf_with_three_numbers() {
+    assert_eq!(cpf::format("943"), "943");
+}
+
+#[test]
+fn should_format_cpf_with_four_numbers() {
+    assert_eq!(cpf::format("9438"), "943.8");
+}
+
+#[test]
+fn should_format_cpf_with_five_numbers() {
+    assert_eq!(cpf::format("94389"), "943.89");
+}
+
+#[test]
+fn should_format_cpf_with_six_numbers() {
+    assert_eq!(cpf::format("943895"), "943.895");
+}
+
+#[test]
+fn should_format_cpf_with_seven_numbers() {
+    assert_eq!(cpf::format("9438957"), "943.895.7");
+}
+
+#[test]
+fn should_format_cpf_with_eight_numbers() {
+    assert_eq!(cpf::format("94389575"), "943.895.75");
+}
+
+#[test]
+fn should_format_cpf_with_nine_numbers() {
+    assert_eq!(cpf::format("943895751"), "943.895.751");
+}
+
+#[test]
+fn should_format_cpf_with_ten_numbers() {
+    assert_eq!(cpf::format("9438957510"), "943.895.751-0");
+}
+
+#[test]
+fn should_format_cpf_with_eleven_numbers() {
+    assert_eq!(cpf::format("94389575104"), "943.895.751-04");
+}
