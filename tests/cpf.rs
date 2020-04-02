@@ -96,3 +96,8 @@ fn should_return_false_when_contains_only_letters_or_special_characters() {
 fn should_return_false_when_is_a_cpf_invalid() {
     assert_eq!(cpf::is_valid("11257245286"), false);
 }
+
+#[test]
+fn should_return_false_when_is_a_cpf_invalid_tes_numbers_with_letters() {
+    assert_eq!(cpf::is_valid("foo391.838.38test0-66"), false);
+}

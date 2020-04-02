@@ -53,6 +53,11 @@ pub fn format(cpf: &str) -> String {
 }
 
 pub fn is_valid(cpf: &str) -> bool {
+    if cpf.matches(char::is_lowercase).count() > 0 
+        || cpf.matches(char::is_uppercase).count() > 0{
+        return false;
+    }
+
     let cpf = cpf.matches(char::is_numeric).collect::<Vec<_>>().concat();
 
     let reserved_numbers = reserved_numbers();
@@ -83,8 +88,7 @@ fn validate(cpf: String) -> bool {
     else {
         digit1 = 11 - mod_sum1;
     }
-    
-    
+
     let mut sum: u32 = 0;
     let mut factor: u32 = 11;
     for i in 0..9 {
