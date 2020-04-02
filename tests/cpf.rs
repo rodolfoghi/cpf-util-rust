@@ -106,3 +106,8 @@ fn should_return_false_when_is_a_cpf_invalid_tes_numbers_with_letters() {
 fn should_return_true_when_is_cpf_valid_without_mask() {
     assert_eq!(cpf::is_valid("40364478829"), true);
 }
+
+#[test]
+fn should_return_true_when_is_cpf_valid_with_mask() {
+    assert_eq!(cpf::is_valid("962.718.458-60"), true);
+}
