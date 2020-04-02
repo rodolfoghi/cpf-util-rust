@@ -64,3 +64,8 @@ fn should_format_cpf_with_eleven_numbers() {
 fn should_not_add_digits_after_the_cpf_length() {
     assert_eq!(cpf::format("94389575104000000"), "943.895.751-04");
 }
+
+#[test]
+fn should_remove_all_non_numeric_characters() {
+    assert_eq!(cpf::format("943.?ABC895.751-04abc"), "943.895.751-04");
+}
