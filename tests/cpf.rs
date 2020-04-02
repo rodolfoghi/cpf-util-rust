@@ -86,3 +86,8 @@ fn should_return_false_when_is_a_empty_string() {
 fn should_return_false_when_dont_match_with_cpf_length() {
     assert_eq!(cpf::is_valid("123456"), false);
 }
+
+#[test]
+fn should_return_false_when_contains_only_letters_or_special_characters() {
+    assert_eq!(cpf::is_valid("abcabcabcde"), false);
+}
