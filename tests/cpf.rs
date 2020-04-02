@@ -101,3 +101,8 @@ fn should_return_false_when_is_a_cpf_invalid() {
 fn should_return_false_when_is_a_cpf_invalid_tes_numbers_with_letters() {
     assert_eq!(cpf::is_valid("foo391.838.38test0-66"), false);
 }
+
+#[test]
+fn should_return_true_when_is_cpf_valid_without_mask() {
+    assert_eq!(cpf::is_valid("40364478829"), true);
+}
