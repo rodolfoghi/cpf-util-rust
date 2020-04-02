@@ -69,3 +69,10 @@ fn should_not_add_digits_after_the_cpf_length() {
 fn should_remove_all_non_numeric_characters() {
     assert_eq!(cpf::format("943.?ABC895.751-04abc"), "943.895.751-04");
 }
+
+#[test]
+fn should_return_false_when_it_is_on_the_reserved_words() {
+    for cpf_number in cpf::RESERVED_NUMBERS {
+        assert_eq!(cpf::is_valid(cpf_number), false);
+    }
+}

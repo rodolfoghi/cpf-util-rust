@@ -2,6 +2,18 @@ use std::cmp;
 
 const CPF_LENGTH: usize = 11;
 
+pub const RESERVED_NUMBERS: &'static [&'static str] = &[ "00000000000",
+    "11111111111",
+    "22222222222",
+    "33333333333",
+    "44444444444",
+    "55555555555",
+    "66666666666",
+    "77777777777",
+    "88888888888",
+    "99999999999",
+    ];
+
 pub fn format(cpf: &str) -> String { 
 
     let cpf = cpf.matches(char::is_numeric)
@@ -22,4 +34,8 @@ pub fn format(cpf: &str) -> String {
     {
         String::from(cpf)
     }
+}
+
+pub fn is_valid(cpf: &str) -> bool {
+    !RESERVED_NUMBERS.contains(&cpf)
 }
