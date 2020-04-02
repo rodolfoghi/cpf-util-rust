@@ -37,5 +37,5 @@ pub fn format(cpf: &str) -> String {
 }
 
 pub fn is_valid(cpf: &str) -> bool {
-    !cpf.is_empty() && !RESERVED_NUMBERS.contains(&cpf)
+    !cpf.is_empty() && cpf.len() == CPF_LENGTH && !RESERVED_NUMBERS.contains(&cpf)
 }

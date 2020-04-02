@@ -81,3 +81,8 @@ fn should_return_false_when_it_is_on_the_reserved_words() {
 fn should_return_false_when_is_a_empty_string() {
     assert_eq!(cpf::is_valid(""), false);
 }
+
+#[test]
+fn should_return_false_when_dont_match_with_cpf_length() {
+    assert_eq!(cpf::is_valid("123456"), false);
+}
