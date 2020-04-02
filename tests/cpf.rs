@@ -72,8 +72,8 @@ fn should_remove_all_non_numeric_characters() {
 
 #[test]
 fn should_return_false_when_it_is_on_the_reserved_words() {
-    for cpf_number in cpf::RESERVED_NUMBERS {
-        assert_eq!(cpf::is_valid(cpf_number), false);
+    for cpf_number in cpf::reserved_numbers() {
+        assert_eq!(cpf::is_valid(&cpf_number), false);
     }
 }
 
@@ -90,4 +90,9 @@ fn should_return_false_when_dont_match_with_cpf_length() {
 #[test]
 fn should_return_false_when_contains_only_letters_or_special_characters() {
     assert_eq!(cpf::is_valid("abcabcabcde"), false);
+}
+
+#[test]
+fn should_return_false_when_is_a_cpf_invalid() {
+    assert_eq!(cpf::is_valid("11257245286"), false);
 }
