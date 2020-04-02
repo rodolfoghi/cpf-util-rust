@@ -59,3 +59,8 @@ fn should_format_cpf_with_ten_numbers() {
 fn should_format_cpf_with_eleven_numbers() {
     assert_eq!(cpf::format("94389575104"), "943.895.751-04");
 }
+
+#[test]
+fn should_not_add_digits_after_the_cpf_length() {
+    assert_eq!(cpf::format("94389575104000000"), "943.895.751-04");
+}
