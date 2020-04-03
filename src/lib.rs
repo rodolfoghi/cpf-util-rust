@@ -57,43 +57,36 @@ pub fn is_valid(cpf: &str) -> bool {
 fn validate(cpf: String) -> bool {
     let cpf = cpf.matches(char::is_numeric).collect::<Vec<_>>();
     
-    let mut sum: u32 = 0;
-    let mut factor: u32 = 10;
-    for i in 0..9 {
-        sum = sum + cpf[i].parse::<u32>().unwrap() * factor;
-        factor = factor - 1;
-    }
-    
-    let mod_sum1 = sum % 11;
-    
-    let digit1: u32;
-    
-    if mod_sum1 < 2 {
-        digit1 = 0;
-    }
-    else {
-        digit1 = 11 - mod_sum1;
-    }
+    let sum = check_sum(&cpf, 10);
 
-    let mut sum: u32 = 0;
-    let mut factor: u32 = 11;
-    for i in 0..9 {
-        sum = sum + cpf[i].parse::<u32>().unwrap() * factor;
-        factor = factor - 1;
-    }
+    let digit1: u32 = calc_digit(sum);
+
+    let mut sum: u32 = check_sum(&cpf, 11);
     sum = sum + digit1 * 2;
-    
-    let mod_sum2 = sum % 11;
-    
-    let digit2: u32;
-    
-    if mod_sum2 < 2 {
-        digit2 = 0;
-    }
-    else {
-        digit2 = 11 - mod_sum2;
-    }
+    let digit2: u32 = calc_digit(sum);
 
     cpf[9].parse::<u32>().unwrap() == digit1 
         && cpf[10].parse::<u32>().unwrap() == digit2
+}
+
+fn check_sum(cpf: &Vec<&str>, factor: u32) -> u32 {
+    let mut sum: u32 = 0;
+    let mut factor: u32 = factor;
+    for i in 0..9 {
+        sum = sum + cpf[i].parse::<u32>().unwrap() * factor;
+        factor = factor - 1;
+    }
+
+    sum
+}
+
+fn calc_digit(sum: u32) -> u32 {
+    let mod_sum1 = sum % 11;
+
+    if mod_sum1 < 2 {
+        0
+    }
+    else {
+        11 - mod_sum1
+    }
 }
