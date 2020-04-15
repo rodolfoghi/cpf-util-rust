@@ -1,4 +1,4 @@
-
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rodolfoghi/cpf-util-rust/Rust) ![Crates.io](https://img.shields.io/crates/v/cpf-util) ![Crates.io](https://img.shields.io/crates/d/cpf-util)
 
 # CPF util
 
