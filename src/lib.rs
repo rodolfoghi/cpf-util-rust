@@ -64,7 +64,7 @@ fn validate(cpf: String) -> bool {
     cpf[9].parse::<u32>().unwrap() == digit1 && cpf[10].parse::<u32>().unwrap() == digit2
 }
 
-fn check_sum(cpf: &Vec<&str>, factor: u32) -> u32 {
+fn check_sum(cpf: &[&str], factor: u32) -> u32 {
     let mut sum: u32 = 0;
     let mut factor: u32 = factor;
     for i in 0..9 {
