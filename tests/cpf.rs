@@ -73,41 +73,41 @@ fn should_remove_all_non_numeric_characters() {
 #[test]
 fn should_return_false_when_it_is_on_the_reserved_words() {
     for cpf_number in cpf::reserved_numbers() {
-        assert_eq!(cpf::is_valid(&cpf_number), false);
+        assert!(!cpf::is_valid(&cpf_number));
     }
 }
 
 #[test]
 fn should_return_false_when_is_a_empty_string() {
-    assert_eq!(cpf::is_valid(""), false);
+    assert!(!cpf::is_valid(""));
 }
 
 #[test]
 fn should_return_false_when_dont_match_with_cpf_length() {
-    assert_eq!(cpf::is_valid("123456"), false);
+    assert!(!cpf::is_valid("123456"));
 }
 
 #[test]
 fn should_return_false_when_contains_only_letters_or_special_characters() {
-    assert_eq!(cpf::is_valid("abcabcabcde"), false);
+    assert!(!cpf::is_valid("abcabcabcde"));
 }
 
 #[test]
 fn should_return_false_when_is_a_cpf_invalid() {
-    assert_eq!(cpf::is_valid("11257245286"), false);
+    assert!(!cpf::is_valid("11257245286"));
 }
 
 #[test]
 fn should_return_false_when_is_a_cpf_invalid_tes_numbers_with_letters() {
-    assert_eq!(cpf::is_valid("foo391.838.38test0-66"), false);
+    assert!(!cpf::is_valid("foo391.838.38test0-66"));
 }
 
 #[test]
 fn should_return_true_when_is_cpf_valid_without_mask() {
-    assert_eq!(cpf::is_valid("40364478829"), true);
+    assert!(cpf::is_valid("40364478829"));
 }
 
 #[test]
 fn should_return_true_when_is_cpf_valid_with_mask() {
-    assert_eq!(cpf::is_valid("962.718.458-60"), true);
+    assert!(cpf::is_valid("962.718.458-60"));
 }
