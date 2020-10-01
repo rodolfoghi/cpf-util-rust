@@ -67,8 +67,8 @@ fn validate(cpf: String) -> bool {
 fn check_sum(cpf: &[&str], factor: u32) -> u32 {
     let mut sum: u32 = 0;
     let mut factor: u32 = factor;
-    for i in 0..9 {
-        sum += cpf[i].parse::<u32>().unwrap() * factor;
+    for n in cpf.iter().take(9) {
+        sum += n.parse::<u32>().unwrap() * factor;
         factor -= 1;
     }
 
