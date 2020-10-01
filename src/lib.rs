@@ -34,7 +34,7 @@ pub fn format(cpf: &str) -> String {
             &cpf[9..end_position]
         )
     } else {
-        String::from(cpf)
+        cpf
     }
 }
 
