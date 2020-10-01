@@ -39,8 +39,7 @@ pub fn format(cpf: &str) -> String {
 }
 
 pub fn is_valid(cpf: &str) -> bool {
-    if cpf.matches(char::is_lowercase).count() > 0 
-        || cpf.matches(char::is_uppercase).count() > 0{
+    if cpf.matches(char::is_lowercase).count() > 0 || cpf.matches(char::is_uppercase).count() > 0 {
         return false;
     }
 
@@ -48,15 +47,12 @@ pub fn is_valid(cpf: &str) -> bool {
 
     let reserved_numbers = reserved_numbers();
 
-    !cpf.is_empty()
-        && cpf.len() == CPF_LENGTH
-        && !reserved_numbers.contains(&cpf)
-        && validate(cpf)
+    !cpf.is_empty() && cpf.len() == CPF_LENGTH && !reserved_numbers.contains(&cpf) && validate(cpf)
 }
 
 fn validate(cpf: String) -> bool {
     let cpf = cpf.matches(char::is_numeric).collect::<Vec<_>>();
-    
+
     let sum = check_sum(&cpf, 10);
 
     let digit1: u32 = calc_digit(sum);
@@ -65,8 +61,7 @@ fn validate(cpf: String) -> bool {
     sum = sum + digit1 * 2;
     let digit2: u32 = calc_digit(sum);
 
-    cpf[9].parse::<u32>().unwrap() == digit1 
-        && cpf[10].parse::<u32>().unwrap() == digit2
+    cpf[9].parse::<u32>().unwrap() == digit1 && cpf[10].parse::<u32>().unwrap() == digit2
 }
 
 fn check_sum(cpf: &Vec<&str>, factor: u32) -> u32 {
@@ -85,8 +80,7 @@ fn calc_digit(sum: u32) -> u32 {
 
     if mod_sum1 < 2 {
         0
-    }
-    else {
+    } else {
         11 - mod_sum1
     }
 }
