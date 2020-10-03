@@ -9,7 +9,7 @@ CPF util inspired in [brazilian-utils/cpf](https://github.com/brazilian-utils/br
 Add the following to your `Cargo.toml`:
 ```rust
 [dependencies]
-cpf_util = "0.1.0"
+cpf_util = "0.1.1"
 ```
 
 ## Examples
